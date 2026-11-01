@@ -144,16 +144,20 @@ No real run needed.
 
 - New ADRs 0001 to 0006, as in section 6.
 - `dev/backlog.md`:
-  - **Now:** handoff 002, snapshot schema v0.1 and the COSMIC rubric with anchor examples; then Miguel's blind labels of Knowledge Automata's PRs (D6), committed before any numbers exist; handoff 003, backfill scripts over Knowledge Automata; 004, the two views; 005, the write-up. Mark these as a sketch.
+  - **Now:** handoff 002, snapshot schema v0.1 and the COSMIC rubric with anchor examples, after Miguel's blind labels of Knowledge Automata's PRs (D6) are committed as a frozen discovery record; handoff 003, backfill scripts over Knowledge Automata; 004, the two views; 005, the write-up. Mark these as a sketch.
   - **Later:** each item under "Deliberately relaxed" in `AGENTS.md`; require the CI status check in the `main` ruleset once CI exists and has run once; Dependabot version updates once there are dependencies; the planning gate; later accounts (Waste Log (dead code account), coupling, Test Health (test value account)); blending the LLM judgement into the index as a new method version; cognitive and coupling tools for languages other than Python; prior-art checks before publishing v1 (Qodo, Greptile and Graphite docs, the CodeScene paper arXiv 2601.02200, the alignment categories in Altunhan et al.); for the principles repo, the release checklist and the handoff-size idea from record 06.
   - **Open questions:** where the sample scripts live (proposal: `examples/knowledge-automata/`, reading the Knowledge Automata clone by a path argument); the final name for the first account; an outcome to validate against beyond D6; whether the `main` ruleset's "require extra approval for unattributed changes" blocks a solo owner's merge (checked on this PR); and the experiments from the primer's "Experiments to log from day one", one line each, results logged in `dev/tool-feedback.md` or `dev/principles-in-practice.md`.
   - **Technical debt:** none yet.
-- `dev/principles-in-practice.md` and `dev/tool-feedback.md`: record 06's entries, plus any new ones as they come up.
+- `dev/principles-in-practice.md`: record 06's entries, plus two entries dated 2026-11-01:
+  - Rule 1 (plan first) adapted: the implementer's plan is itself a file, `dev/plans/NNN-plan.md`, written before any other file. The rule's intent holds (no work before approval); its wording ("before writing any file") bends. Candidate wording for the playbook if the plan exchange holds.
+  - Experiment: the planner and the implementer share one working tree and one branch, each committing its own files by path. Watch for clobbered or wrongly staged files. If it happens, the fix is separate worktrees, not more rules.
+- `dev/tool-feedback.md`: record 06's entries.
+- Both logs: any new entries as they come up.
 - `dev/STATUS.md`: written at the end. Phase: scaffolding done, handoff 002 next.
 
 ## 9. Suggested commit sequence
 
-1. `docs: add implementer plan for handoff 001` (`dev/plans/001-plan.md`, once approved)
+1. `docs: add implementer plan for handoff 001` (`dev/plans/001-plan.md`), your first commit, right after the planner has committed `dev/plans/001-plan-review.md` with `approved`
 2. `chore: add process files from the v1.2.0 templates`
 3. `docs: record ADRs 0001 to 0006`
 4. `docs: add the standard overview and the Food Cost account`
@@ -184,7 +188,7 @@ No code, so no test suite. Check, and say in your report how:
 ## 12. Out of scope
 
 - The snapshot schema, rubrics, prompts and anchor examples (handoff 002).
-- Miguel's blind labels (after 002, before 003).
+- Miguel's blind labels (a frozen discovery record, committed before handoff 002).
 - Any script, `pyproject.toml`, CI or dependency.
 - `schemas/`, `rubrics/` and `examples/` folders: created by the handoffs that fill them.
 - Changes to the principles repo or Knowledge Automata.
