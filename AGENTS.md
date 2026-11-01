@@ -26,7 +26,7 @@ The two Claude sessions stay separate, each with its own context (playbook rule 
 ## Where things live (sources of truth)
 
 - `AGENTS.md`: how we work, and the only source of rules. `CLAUDE.md` only imports it.
-- `dev/STATUS.md`: where we are now. Read it first at the start of every session; update it at the end.
+- `dev/STATUS.md`: where we are now, as a snapshot: one line per item, no history. The story of each handoff lives in its handoff and plan files. Read it first at the start of every session; update it at the end.
 - `dev/backlog.md`: what's next, what's later, open questions, technical debt.
 - `dev/handoffs/`: every handoff, committed before implementation starts.
 - `dev/plans/`: the written exchange for each handoff (see "Plan exchange" below).
@@ -68,7 +68,8 @@ Every exchange between the planner and the implementer is a file in the repo, so
 3. When revising, the implementer bumps the version line at the top and adds a short "changes since the last version" note.
 4. During implementation, a question is a numbered entry in the plan file. The implementer stops until the planner answers under the same number in the review file.
 5. The implementer ends with an implementation report in the plan file: what was built, what deviated and why, how it was tested, open points. The planner answers with an implementation review.
-6. Both files are committed with the pull request.
+6. The planner commits `NNN-plan-review.md` when it writes `approved`. The implementer's first commit is `NNN-plan.md`. Build commits come after both, so the history shows the approval before the work.
+7. Both files are committed with the pull request.
 
 ## Deliberately relaxed at prototype level
 
