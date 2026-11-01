@@ -43,7 +43,7 @@ Read `AGENTS.md` (loaded through `CLAUDE.md`) before planning. There is no `dev/
 - `dev/costs.md` rows are added by the planner as the last commit before merging, so one session owns the file's numbers. You report your own time in the implementation report.
 - The experiments from the primer go into `dev/backlog.md` under *Open questions*, so they are tracked in one place.
 
-**Already committed on this branch:** `dev/discovery/` (all files), `.github/rulesets/` (both exports), and, in the planner's commit, this handoff, `AGENTS.md` and `CLAUDE.md`. Do not modify them. If you find a problem in any of them, raise it in your plan.
+**Already committed on this branch:** `dev/discovery/` (all files), `.github/rulesets/` (both exports), and, in the planner's commits, this handoff, `AGENTS.md`, `CLAUDE.md`, `.claude/settings.json` and `dev/plans/001-plan-review.md` (so far only the planner's time log). Do not modify them. If you find a problem in any of them, raise it in your plan.
 
 ## 2. How to work on this task
 
@@ -151,7 +151,8 @@ No real run needed.
 - `dev/principles-in-practice.md`: record 06's entries, plus two entries dated 2026-11-01:
   - Rule 1 (plan first) adapted: the implementer's plan is itself a file, `dev/plans/NNN-plan.md`, written before any other file. The rule's intent holds (no work before approval); its wording ("before writing any file") bends. Candidate wording for the playbook if the plan exchange holds.
   - Experiment: the planner and the implementer share one working tree and one branch, each committing its own files by path. Watch for clobbered or wrongly staged files. If it happens, the fix is separate worktrees, not more rules.
-- `dev/tool-feedback.md`: record 06's entries.
+- `dev/tool-feedback.md`: record 06's entries, plus one entry dated 2026-11-01:
+  - Claude Code auto-memory was on by default. The planner session wrote its time log there instead of in the repo. `/context` showed it loaded in a fresh session in the same folder, so the implementer would have started with the planner's notes. Turned off per repo with `.claude/settings.json`; a setting enforces what a rule in `AGENTS.md` could only ask for.
 - Both logs: any new entries as they come up.
 - `dev/STATUS.md`: written at the end. Phase: scaffolding done, handoff 002 next.
 

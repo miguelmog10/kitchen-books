@@ -37,6 +37,8 @@ The two Claude sessions stay separate, each with its own context (playbook rule 
 - `dev/costs.md`: what each pull request cost, in Claude's time and Miguel's time.
 - `.github/rulesets/`: JSON exports of the GitHub rulesets active on this repo. When a ruleset changes on GitHub, update its export in the same pull request.
 
+- Claude Code auto-memory is off for this repo (`.claude/settings.json`). It is stored outside the repo and shared by every session opened here, so it would be a second memory nobody reviews and a side channel between the planner and the implementer. The repo is the memory: STATUS, handoffs, plans and the running logs.
+
 Nothing important should exist only in a chat session.
 
 ## Non-negotiables
