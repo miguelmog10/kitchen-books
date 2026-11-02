@@ -28,3 +28,38 @@ Evidence: file, ADR or commit.
 -->
 
 ## Entries
+
+### 2026-11-01: P8 Externalize memory (teamwork)
+
+Discovery happened in a claude.ai project whose docs Claude Code cannot see. Before switching tools, the records were copied into `dev/discovery/`. Lesson: when work moves to a tool that only reads the repo, move the memory first.
+Evidence: [`dev/discovery/`](discovery/README.md).
+
+### 2026-11-01: P1 Design before prompting (product)
+
+"Start from zero" restarted the process, not the design. Decisions made under P1 (discovery records 01 to 04) were kept; redoing them would have wasted good work.
+Evidence: [`dev/discovery/05-planner-primer.md`](discovery/05-planner-primer.md), "What is settled".
+
+### 2026-11-01: P14 Version everything that matters (teamwork)
+
+Pinning to a tag protects a project only if the tag is right: the principles repo's `v1.2.0` tag first pointed at the v1.1.0 commit. Candidate release checklist: merge the release PR, switch to `main` and pull, tag, push, check the tag's commit, publish the Release. Worth proposing to the principles backlog.
+Evidence: [`dev/tool-feedback.md`](tool-feedback.md), entries of 2026-11-01 on the tag.
+
+### 2026-11-01: P11 Build evidence, not just confidence (teamwork)
+
+The release fix was verified against GitHub (`git ls-remote`), not against the local clone or a summary of the commands.
+Evidence: [`dev/discovery/06-notes-for-the-logs.md`](discovery/06-notes-for-the-logs.md).
+
+### 2026-11-01: P1 Design before prompting (bent)
+
+Playbook rule 1 (plan first, P1 and P5) says the implementer waits for approval "before it writes any file". Here the implementer's plan is itself a file, `dev/plans/NNN-plan.md`, written before any other file. The rule's intent holds (no work before approval); its wording bends. Candidate wording for the playbook if the plan exchange holds.
+Evidence: `AGENTS.md`, "Plan exchange"; [`dev/plans/001-plan.md`](plans/001-plan.md).
+
+### 2026-11-01: P5 AI generates. Humans own (teamwork)
+
+Experiment: the planner and the implementer share one working tree and one branch, each committing its own files by path. Watch for clobbered or wrongly staged files. If it happens, the fix is separate worktrees, not more rules.
+Evidence: `AGENTS.md`, "Commits, branches and pull requests".
+
+### 2026-11-01: P5 AI generates. Humans own (teamwork)
+
+Plan exchange, handoff 001: one round, approved with three notes and one answer, amended once before any build commit. The review caught two problems in the plan: a README status line that would go stale on merge, and an unchanged-files check that could not tell the two sessions apart, because every commit has the same git author. The fix reads the `Co-authored-by:` trailers instead.
+Evidence: [`dev/plans/001-plan-review.md`](plans/001-plan-review.md), round 1.
