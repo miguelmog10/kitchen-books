@@ -11,3 +11,4 @@ Cost is measured in time for now, not credits or money: the work runs on a subsc
 
 | PR | Title | Planner time | Implementer time | Miguel's time | Notes |
 |---|---|---|---|---|---|
+| #1 (expected) | chore: scaffold process files and first product docs (handoff 001) | About 22 min, Claude Opus 5.5 | About 20 min, Claude Opus 5.5 | About 2 h (estimate) | Claude times are clock minutes between each row's first and last command, from `dev/plans/001-plan-review.md` and `001-plan.md`; one planner row has no start, and the implementer's includes an interruption. Miguel's time is Miguel's own estimate: setup, questions, reviews and relaying between sessions. Rounds: one plan round, two implementation rounds. |
