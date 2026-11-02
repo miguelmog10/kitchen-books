@@ -119,3 +119,116 @@ A short script in my session scratchpad (not in the repo), run before commit 7 a
 1. **Record 06's "Setup" row in `dev/tool-feedback.md`.** It is a decision about the setup, not feedback on a tool, so none of the four types fits. Proposal: keep it in `tool-feedback.md` as "Claude Code, desktop app and VS Code extension (setup)", adding "setup" as a fifth type, since the setup is what later entries compare against. Alternative: move it to `principles-in-practice.md` as a P5 teamwork entry. I will use the proposal unless the review says otherwise; this does not block approval.
 
 No other problems found in the handoff, `AGENTS.md`, `CLAUDE.md` or `.claude/settings.json`.
+
+## Implementation report
+
+### What was built
+
+Seven commits on `chore/scaffolding`, in the planned order. Review notes 1 to 3 and answer 1 are applied.
+
+| Commit | Files |
+| --- | --- |
+| `c9132db` plan | `dev/plans/001-plan.md` |
+| `4deaeb3` process files | `dev/costs.md`, `dev/principles-in-practice.md`, `dev/tool-feedback.md`, `.github/pull_request_template.md`, `docs/decisions/0000-template.md` |
+| `18f1b48` ADRs | `docs/decisions/README.md`, `0001` to `0006` |
+| `efa79d9` standard | `standard/overview.md`, `standard/accounts/food-cost.md` |
+| `7950884` logs | `dev/tool-feedback.md`, `dev/principles-in-practice.md` (entries) |
+| `a580c82` README | `README.md` |
+| commit 7 | `dev/STATUS.md`, `dev/backlog.md`, this report |
+
+### Deviations from the plan, and why
+
+- **README status (note 1):** "Standard v0.1, draft. Not yet tested on a real project", with a link to `dev/STATUS.md` for the current step.
+- **Unchanged-files check (note 2):** the trailer-based `git log --grep` commands replace the `git diff 5e4bd0d` check in "How I will check the result".
+- **`setup` type (answer 1):** added to the entry-format line in `dev/tool-feedback.md`, with one sentence defining it. A template adaptation; listed in the backlog's *Later* for the principles repo, if it holds.
+- **ADRs 0001 to 0006 carry the template's two source lines**, since each is a copy of the ADR template. The plan named only `0000-template.md`.
+- **Small additions to the product docs**, each from a source the handoff already uses:
+  - `food-cost.md` has a short "Views" section (from records 01 and 02), because the account needs a place to say docs-only pull requests should land near the origin.
+  - `food-cost.md` says the diff, pull request description and handoff are untrusted data kept apart from the prompt's instructions (from `AGENTS.md`).
+  - `overview.md`'s "Why now" point 1 cites CodeScene's 2026 research, as record 03 ("What this changes", point 5) asks. The P-number references from record 01 are dropped from the product docs, which are for readers outside the process.
+- **Two extra log entries** ("any new entries as they come up"):
+  - `tool-feedback.md`: `grep -P` failing in the Bash tool's shell without a UTF-8 locale.
+  - `principles-in-practice.md`: the first plan-exchange round (one round, what it caught). The planner may prefer to own this experiment's entries; reword or move it as you see fit.
+- **Link check** also resolves `#anchor` links against the target's headings (the README and backlog link sections of the standard).
+
+### How it was checked
+
+All runs from Git Bash in the repo root, on the final files, before commit 7 was made. `$FILES` is every file changed since the approval, committed or not: `$( (git diff --name-only 7bc07aa..HEAD; git ls-files --others --modified --exclude-standard) | sort -u)`. It lists 19 files: the 18 of this handoff plus the planner's `dev/plans/001-plan-review.md`, from its own commit `b506f87`.
+
+Relative links, with a script in my session scratchpad (not in the repo), which checks that each target exists and that each `#anchor` matches a heading:
+
+```
+$ python -I checklinks.py $FILES
+0 broken links
+```
+
+Em dash (U+2014), and en dash (U+2013) for good measure:
+
+```
+$ LC_ALL=C.UTF-8 grep -n $'\xe2\x80\x94' $FILES; echo "em dash exit: $?"
+em dash exit: 1
+$ LC_ALL=C.UTF-8 grep -n $'\xe2\x80\x93' $FILES; echo "en dash exit: $?"
+en dash exit: 1
+```
+
+No output, exit 1: no match.
+
+Template placeholders, by the templates' exact placeholder openings, then any bracketed sentence:
+
+```
+$ grep -nE "\[(One paragraph|Handoff or pull|What is being|The next steps|Anything the next|What the current|Deliberately deferred|Questions still|Known shortcuts|type: title|tool, model|credits, money)" $FILES; echo "exit $?"
+exit 1
+$ grep -nE "\[[A-Z][^]]*\.\]" $FILES; echo "exit $?"
+exit 1
+```
+
+No output, exit 1.
+
+Discovery records and ruleset exports unchanged:
+
+```
+$ git diff d905736 -- dev/discovery .github/rulesets; echo "exit $?"
+exit 0
+```
+
+No output.
+
+The planner's files untouched by any implementer commit (note 2):
+
+```
+$ git log --format="%h %s" --grep="Co-authored-by: Claude implementer" 7bc07aa..HEAD
+a580c82 docs: rewrite the README
+7950884 docs: move discovery notes into the running logs
+efa79d9 docs: add the standard overview and the Food Cost account
+18f1b48 docs: record ADRs 0001 to 0006
+4deaeb3 chore: add process files from the v1.2.0 templates
+c9132db docs: add implementer plan for handoff 001
+$ git log --format="%h %s" --grep="Co-authored-by: Claude implementer" 7bc07aa..HEAD -- dev/handoffs/001-scaffolding.md AGENTS.md CLAUDE.md .claude/settings.json dev/plans/001-plan-review.md
+```
+
+The first lists six commits because it ran before commit 7; rerun it after, and it should list seven. The second printed nothing.
+
+Template source lines, lines 2 and 3 of the 13 files copied from a template (`dev/STATUS.md`, `dev/backlog.md`, `dev/costs.md`, the two logs, `.github/pull_request_template.md`, `docs/decisions/0000` to `0006`):
+
+```
+$ for f in <the 13 files>; do sed -n 2,3p $f; done | sort | uniq -c
+     13 From AI-Assisted Software Engineering templates v1.2.0 (CC0 1.0):
+     13 https://github.com/miguelmog10/ai-assisted-software-engineering/tree/v1.2.0/templates
+```
+
+Also read through each file against handoff section 6: version line and source line on both standard pages; each ADR Accepted, dated by its record, source linked in Context; kitchen names paired with their role on first mention in each document.
+
+### Open points
+
+- On merge, Miguel checks whether the `main` ruleset's "unattributed changes" setting blocks it (handoff section 11).
+- Git warns "LF will be replaced by CRLF" on every new file: there is no `.gitattributes`, and Git on this machine converts line endings. Harmless for Markdown. Worth a `.gitattributes` once there is code and CI.
+- The session was interrupted once (the chat was closed by mistake) after STATUS and the backlog were written. The link and dash checks had already passed. On resuming, the working tree was intact, and every check was run again on the final files.
+
+### Time
+
+Times are local (UTC-5).
+
+| Date | Start | End | What |
+| --- | --- | --- | --- |
+| 2026-11-01 | 18:33 | 18:35 | Read the handoff, records, templates and Knowledge Automata examples; wrote plan version 1 |
+| 2026-11-01 | 19:24 | 19:41 | Built commits 1 to 6, STATUS and the backlog, ran the checks, wrote this report. Includes an interruption of unrecorded length before 19:40 |
