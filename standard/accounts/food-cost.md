@@ -25,7 +25,7 @@ This keeps history stable while the method is still being learned ([ADR-0005](..
 
 ## Complexity side (technical change)
 
-**Production code only.** Test code is recorded in the snapshot but kept out of the index. More tests usually mean healthier code, and coverage tools already exist. Tests can also add complexity without adding value; that question belongs to a later Test Health (test value account).
+**Production code only.** Test code is recorded in the snapshot but kept out of the index. More tests usually mean healthier code, and coverage tools already exist. Tests can also add complexity without adding value; that question belongs to a later account, Test Health (test value account).
 
 Components are grouped so that correlated ones don't outvote the others. Each group gets one third of the weight; inside a group, components are averaged.
 

@@ -232,3 +232,18 @@ Times are local (UTC-5).
 | --- | --- | --- | --- |
 | 2026-11-01 | 18:33 | 18:35 | Read the handoff, records, templates and Knowledge Automata examples; wrote plan version 1 |
 | 2026-11-01 | 19:24 | 19:41 | Built commits 1 to 6, STATUS and the backlog, ran the checks, wrote this report. Includes an interruption of unrecorded length before 19:40 |
+
+## Round 2: fixes from implementation review round 1
+
+All four fixes, in one commit:
+
+1. `dev/STATUS.md` written as it will be true after merge: phase "Handoff 001 (scaffolding) done; next, Miguel's blind labels, then handoff 002", "In progress: None." The ruleset merge check stays in "Notes for the next session".
+2. ADR-0006, last consequence: "Any later account that measures scope uses this measure, so changing it is a new ADR."
+3. `dev/principles-in-practice.md`, the plan-exchange entry: second and third sentences replaced with the planner's suggested text, so Miguel's catch of the author-based check is recorded.
+4. `standard/accounts/food-cost.md`: "that question belongs to a later account, Test Health (test value account)."
+
+**Time, first row:** 18:33 to 18:35 is right. 18:33 is the first `date` read, my second command of the session, seconds after the first. 18:35 is the read after the plan file was written. The reading was fast tool calls (the handoff, records 01 to 06, seven templates, Knowledge Automata's files), not two minutes of my time unaccounted for.
+
+| Date | Start | End | What |
+| --- | --- | --- | --- |
+| 2026-11-01 | 19:56 | 19:58 | Round 2: four fixes, checks rerun, this note |

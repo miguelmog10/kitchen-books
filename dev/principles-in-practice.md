@@ -61,5 +61,5 @@ Evidence: `AGENTS.md`, "Commits, branches and pull requests".
 
 ### 2026-11-01: P5 AI generates. Humans own (teamwork)
 
-Plan exchange, handoff 001: one round, approved with three notes and one answer, amended once before any build commit. The review caught two problems in the plan: a README status line that would go stale on merge, and an unchanged-files check that could not tell the two sessions apart, because every commit has the same git author. The fix reads the `Co-authored-by:` trailers instead.
+Plan exchange, handoff 001: one round, approved with three notes and one answer, amended once before any build commit. The planner's review caught two problems in the plan: a README status line that would go stale on merge, and a diff-based check that could not tell the two sessions' changes apart. The planner's replacement, based on git author, could not work either, since every commit has the same author; Miguel caught it, and the fix reads the `Co-authored-by:` trailers instead.
 Evidence: [`dev/plans/001-plan-review.md`](plans/001-plan-review.md), round 1.

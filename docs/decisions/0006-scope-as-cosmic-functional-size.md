@@ -25,4 +25,4 @@ Measure scope as COSMIC functional size (ISO/IEC 19761):
 - Scope uses a published standard instead of an invented one ("don't reinvent the wheel").
 - Intended scope (from a handoff or issue) and delivered scope (from the diff) are counted the same way and can be compared.
 - The rubric needs anchor examples for cases COSMIC doesn't spell out, such as calls to a model provider.
-- Every later account inherits this scope side, so changing it is a new ADR.
+- Any later account that measures scope uses this measure, so changing it is a new ADR.

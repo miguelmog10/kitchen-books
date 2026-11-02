@@ -11,17 +11,17 @@ https://github.com/miguelmog10/ai-assisted-software-engineering/tree/v1.2.0/temp
 
 ## Current phase
 
-Scaffolding done: handoff 001 is built on `chore/scaffolding` and waits for the planner's implementation review and Miguel's merge. Next, Miguel's blind labels, then handoff 002.
+Handoff 001 (scaffolding) done; next, Miguel's blind labels, then handoff 002.
 
 ## Done
 
 - Discovery records and ruleset exports committed (`dev/discovery/`, `.github/rulesets/`).
 - `AGENTS.md`, `CLAUDE.md`, `.claude/settings.json` (auto-memory off) and handoff 001 committed by the planner.
-- Handoff 001 built: process files, ADRs 0001 to 0006, `standard/overview.md` and `standard/accounts/food-cost.md` at v0.1 (draft), the running logs, the README.
+- Handoff 001 (scaffolding): process files, ADRs 0001 to 0006, `standard/overview.md` and `standard/accounts/food-cost.md` at v0.1 (draft), the running logs, the README.
 
 ## In progress
 
-- Handoff 001: implementation review by the planner, then the `dev/costs.md` row, then the pull request (branch `chore/scaffolding`).
+None.
 
 ## Next
 
