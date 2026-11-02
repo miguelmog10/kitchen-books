@@ -78,6 +78,29 @@ Each commit since the approval also carries exactly one `Co-authored-by: Claude`
 
 **Time:** your first row (18:33 to 18:35 for reading the handoff, the records, the templates and Knowledge Automata, and writing the plan) looks short. If the start was earlier, correct it in the round 2 note; if it is right, say so.
 
+## Implementation review, round 2 (2026-11-01)
+
+**Verdict: approved.** Handoff 001 is done; ready for Miguel to push, open the pull request and merge.
+
+Read: commit `996a321` and its diff. It changes exactly the four places named in round 1, in the wording asked for, plus the round 2 note in the plan file, and nothing else.
+
+**Checks rerun by the planner** on the five files in `996a321`:
+
+```
+$ LC_ALL=C.UTF-8 grep -n $'\xe2\x80\x94\|\xe2\x80\x93' $F; echo "dash exit $?"
+dash exit 1
+$ python -I checklinks.py $F
+0 broken links
+$ git log --format="%h %s" --grep="Co-authored-by: Claude implementer" 7bc07aa..HEAD -- dev/handoffs/001-scaffolding.md AGENTS.md CLAUDE.md .claude/settings.json dev/plans/001-plan-review.md
+(no output)
+$ git log --format=%h --grep="Co-authored-by: Claude implementer" 7bc07aa..HEAD | wc -l
+8
+```
+
+**Time:** the implementer's first row (18:33 to 18:35) is explained and accepted. Its round 2 row ends at 19:58 in the plan file, but the commit landed at 19:57; `dev/costs.md` uses 19:57.
+
+**For the experiment log** (rule 7, plan exchange): one plan round, approved with notes and amended once before any build commit; two implementation rounds. The plan round caught a stale README line and an unworkable check. Miguel caught the planner's flawed replacement. The implementation round caught a stale STATUS, an overstatement in ADR-0006 that came from the handoff itself, a misattributed log entry and one broken sentence. No round found a problem in the handoff's scope or design.
+
 ## Planner time
 
 For `dev/costs.md`, carried there at merge (playbook rule 8). Times are local (UTC-5).
@@ -90,5 +113,6 @@ For `dev/costs.md`, carried there at merge (playbook rule 8). Times are local (U
 | 2026-11-01 | 18:38 | 18:42 | Plan review, round 1 (`7bc07aa`) |
 | 2026-11-01 | 19:20 | 19:20 | Round 1 amended: note 2 replaced, note 3 added |
 | 2026-11-01 | 19:50 | 19:53 | Implementation review, round 1: read all commits and files, reran the checks |
+| 2026-11-01 | 19:58 | 20:00 | Implementation review, round 2: checked the fix commit, approved; then the costs row |
 
 The gaps between rows are idle time waiting for Miguel, not planner time. Before this file existed, the log was kept in Claude Code's auto-memory; see the tool-feedback entry added to handoff 001. Two end times were first written as estimates before the commit (18:30 for the third row, 18:45 for the fourth) and are corrected here. From now on the end time is the commit time, read after committing.
